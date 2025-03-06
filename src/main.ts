@@ -7,13 +7,13 @@ async function bootstrap() {
   app.enableCors();
 
   const config = new DocumentBuilder()
-    .setTitle('ERP API')
+    .setTitle('La Belle Make API')
     .setDescription('The ERP API description')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('swagger', app, document);
 
   await app.listen(process.env.PORT ?? 3001);
 }
