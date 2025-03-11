@@ -1,8 +1,8 @@
 import { Body, Controller, Delete, Get, Post, UseGuards } from "@nestjs/common";
 import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
-import { ProductsService } from "./products.service";
-import { ProductDto } from "./dto/products.dto";
+import { ProductsService } from "../application/products.service";
+import { ProductDto } from "../domain/dto/products.dto";
 
 @ApiTags('Produtos')
 @Controller('Products')
@@ -26,8 +26,8 @@ export class ProductsController {
   @Post('Create')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
-  postCreateProducts(@Body() productDto : ProductDto): string {
-      return this.productsService.getHello();
+  postCreateProducts(@Body() productDto : ProductDto): ProductDto {
+      return this.productsService.postCreateProduct(productDto);
   }
 
   @Post('Update')
