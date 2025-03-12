@@ -4,7 +4,7 @@ import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { ProductsService } from "../application/products.service";
 import { ProductDto } from "../domain/dto/products.dto";
 
-@ApiTags('Produtos')
+@ApiTags('Products')
 @Controller('Products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}

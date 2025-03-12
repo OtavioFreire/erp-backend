@@ -1,15 +1,17 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import knex, { Knex } from 'knex';
+import { InjectModel } from 'nest-knexjs';
 
-const knex = require('../config/database.config');
+
 
 @Injectable()
 export class AuthService {
-  constructor(private jwtService: JwtService) {}
+  constructor(@InjectModel() private readonly knex: Knex, private jwtService: JwtService) {}
   
   async validateUser(login: string, password: string): Promise<any> {
     
-    const user = await knex('users').where({ login }).first();
+    const user = await this.knex('users').where({ login }).first();
 
     if (login === user.login && password === user.password) {
       return { userId: 1, login };
