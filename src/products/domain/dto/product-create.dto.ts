@@ -1,9 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-
-export class ProductDto {
-    @ApiProperty({ example: '9', description: 'Product id' })
-    IdProduct: string;
+export class CreateProductDto {
 
     @ApiProperty({ example: 'Batom mate', description: 'Name of the product' })
     Name: string;
@@ -20,6 +17,12 @@ export class ProductDto {
     @ApiProperty({ example: '7', description:'SubCategory Id' })
     IdSubCategory: string;
 
+    @ApiProperty({ example: '65', description:'Provider Id' })
+    IdProvider: string;
+
     @ApiProperty({ example: '59,7', description: 'Price of product'})
-    Price: string;
+    CostPrice: number;
+
+    @ApiProperty({ example: '89,7', description: 'Price of product'})
+    Price: number;
 }
