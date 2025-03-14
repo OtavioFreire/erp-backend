@@ -8,8 +8,10 @@ export class ProductsService {
 
   constructor (private readonly productsRepository: ProductsRepository) {}
 
-  getHello(): string {
-    return 'Hello World!';
+  async getProductId(id: string): Promise<ProductResponseDto> {
+    const product = await this.productsRepository.getProductId(id);
+
+    return product;
   }
 
   async getAllProducts(): Promise<ProductResponseDto[]> {
