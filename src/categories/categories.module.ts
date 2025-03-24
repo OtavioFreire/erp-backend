@@ -16,8 +16,9 @@ export class CategoriesModule implements OnModuleInit{
     private readonly logger = new Logger(CategoriesModule.name);
     private readonly database: Knex;
     constructor() {
-    this.database = knex(databaseConfig);
+        this.database = knex(databaseConfig);
     }
+    
     async onModuleInit() {
     try {
         await this.database.raw('SELECT 1');

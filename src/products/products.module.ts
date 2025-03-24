@@ -25,7 +25,7 @@ export class ProductsModule implements OnModuleInit{
         this.logger.log('Conexão com o banco de dados estabelecida com sucesso!');
     } catch (error) {
         this.logger.error('Erro ao conectar com o banco de dados:', error);
-        process.exit(1); // Encerra a aplicação se a conexão falhar
+        process.exit(1);
     }
     }
 }
