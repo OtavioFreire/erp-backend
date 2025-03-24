@@ -1,13 +1,16 @@
 import { Logger, Module, OnModuleInit } from "@nestjs/common";
 import knex, { Knex } from "knex";
+import { KnexModule } from "nest-knexjs";
 import databaseConfig from "src/config/database.config";
+import { SubCategoriesController } from "./web-api/subcategories.controller";
+import { SubCategoriesService } from "./application/subcategories.service";
+import { SubCategoriesRepository } from "./infrastructure/subcategories.repository";
 
 
 @Module({
-    imports: [],
-    controllers: [],
-    providers: [],
-    exports: []
+    imports: [KnexModule.forRoot({ config: databaseConfig })],
+    controllers: [SubCategoriesController],
+    providers: [SubCategoriesService, SubCategoriesRepository],
 })
 export class SubCategoriesModule  implements OnModuleInit{
     private readonly logger = new Logger(SubCategoriesModule.name);
