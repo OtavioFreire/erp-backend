@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Post,Request, UseGuards } from "@nestjs/common";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { CategoriesService } from "../application/categories.service";
 import { CategoryResponseDto } from "../domain/dto/category.response.dto";
@@ -13,7 +13,9 @@ export class CategoriesController {
   @Get('All')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
-  async getCategories(): Promise<CategoryResponseDto[]> {
+  async getCategories(@Request() req): Promise<CategoryResponseDto[]> {
+      console.log(req);
+      console.log(req.user);
       return this.categoriesService.getAllCategories();
   }
 
