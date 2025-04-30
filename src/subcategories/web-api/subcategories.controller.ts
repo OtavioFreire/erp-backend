@@ -12,15 +12,15 @@ export class SubCategoriesController {
     constructor(private readonly subcategoriesService: SubCategoriesService) {}
     
     @Get('All')
-    // @UseGuards(JwtAuthGuard)
-    // @ApiBearerAuth()
+    @UseGuards(JwtAuthGuard)
+    @ApiBearerAuth()
     async getSubCategories(): Promise<SubCategoryResponseDto[]> {
         return this.subcategoriesService.getAllSubCategories();
     }
 
     @Post('Create')
-    // @UseGuards(JwtAuthGuard)
-    // @ApiBearerAuth()
+    @UseGuards(JwtAuthGuard)
+    @ApiBearerAuth()
     postCreateSubCategory(@Body() subCategoryDto : CreateSubCategoryDto): Promise<CategoryResponseDto> {
         return this.subcategoriesService.postCreateSubCategory(subCategoryDto);
     }
