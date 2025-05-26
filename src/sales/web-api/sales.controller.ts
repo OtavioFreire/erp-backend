@@ -13,15 +13,11 @@ export class SalesController {
   ) {}
 
   @Get('All')
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   async getAll(): Promise<string>{
     return this.salesService.getAll()
   }
 
   @Post('Create')
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   async createSale(@Body() newSale: CreateSaleDto) {
     try {
       return this.salesService.createSale(newSale);

@@ -11,15 +11,11 @@ export class ProvidersController {
   constructor(private readonly providersService: ProvidersService) {}
 
   @Get('All')
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   async getAllProviders(): Promise<ProviderResponseDto[]> {
     return this.providersService.getAllProviders();
   }   
 
   @Post('Create')
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   async createProvider(@Body() provider : CreateProviderDto): Promise<ProviderResponseDto> {
     const newProvider = await this.providersService.createProvider(provider.providerName);
 
