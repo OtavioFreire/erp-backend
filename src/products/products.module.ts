@@ -17,7 +17,7 @@ export class ProductsModule implements OnModuleInit{
     private readonly logger = new Logger(ProductsModule.name);
     private readonly database: Knex;
     constructor() {
-    this.database = knex(databaseConfig);
+        this.database = knex(databaseConfig);
     }
     async onModuleInit() {
     try {

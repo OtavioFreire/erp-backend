@@ -1,6 +1,5 @@
 import { Body, Controller, Get, Inject, Post, UseGuards } from "@nestjs/common";
-import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
-import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
+import { ApiTags } from "@nestjs/swagger";
 import ISalesService from "../domain/interfaces/sales-service.interface";
 import { CreateSaleDto } from "../domain/dto/sales-create.dto";
 
