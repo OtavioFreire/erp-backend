@@ -19,6 +19,11 @@ export class ProductsController {
     return this.productsService.getAllProducts();
   }
 
+  @Get('colors')
+  getAllColors() {
+    return [{id: 1, color: 'red'}];
+  }
+
   @Post('Create')
   postCreateProducts(@Body() productDto : CreateProductDto): Promise<ProductResponseDto> {
     return this.productsService.postCreateProduct(productDto);
